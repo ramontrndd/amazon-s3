@@ -1,4 +1,4 @@
-import connection from "../../config/db.config";
+import connection from "../config/db.config";
 import { User } from "../models/User";
 
 export class UserService {
