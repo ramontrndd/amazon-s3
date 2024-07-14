@@ -42,4 +42,20 @@ export class UserService {
       });
     });
   }
+  static async findUserByEmail(email: string): Promise<User | null> {
+    return new Promise((resolve, reject) => {
+        const query = "SELECT * FROM users WHERE email = ?";
+        connection.query(query, [email], (err: any, results: any) => {
+            if (err) {
+                reject(err);
+            } else {
+                if (results.length > 0) {
+                    resolve(results[0]);
+                } else {
+                    resolve(null);
+                }
+            }
+        });
+    });
+}
 }
